@@ -1,0 +1,12 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<script type="module">
+import { CSV } from "https://code4sabae.github.io/js/CSV.js";
+
+window.onload = async () => {
+    const csv = await CSV.fetch("https://www.pref.yamanashi.jp/shokuhin-st/shokuiku/documents/yamanashinoshoku.csv");
+
+    console.log(csv);
+}
+
+</script>
+</html>
