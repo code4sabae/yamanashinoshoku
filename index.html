@@ -1,4 +1,5 @@
 <!DOCTYPE html><html><head><meta charset="utf-8">
+<title>特選やまなしの食 オープンデータ</title>
 <script type="module">
 import { CSV } from "https://code4sabae.github.io/js/CSV.js";
 
@@ -13,8 +14,48 @@ window.onload = async () => {
     for (const d of data) {
         const img = new Image();
         img.src = d["写真URL"];
-        document.body.appendChild(img);
+        const url = d["「食べられる・買えるお店」URL"];
+        if (url.length > 0) {
+            img.style.cursor = "pointer";
+            img.url = url;
+            img.onclick = function() {
+                window.open(this.url, "_blank");
+            };
+            main.appendChild(img); // リンク付きだけ表示
+        }
+        // main.appendChild(img); // 全部表示
     }
 };
 </script>
+<style>
+body {
+    text-align: center;
+    background-color: black;
+    color: white;
+}
+#main {
+    x-display: grid;
+    display: inline-block;
+    x-grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    line-height: 0;
+    x-text-align: left;
+}
+img {
+    width: 30vw;
+    max-width: 200px;
+    padding: 5px;
+}
+a {
+    color: #ccc !important;
+}
+</style>
+</head>
+<body>
+<h1>特選やまなしの食 オープンデータ</h1>
+<div id="main"></div>
+<div class="credit">
+    Data: CC BY <a href=https://www.pref.yamanashi.jp/shokuhin-st/shokuiku/yamanashinoshoku_tokusen47_od.html>山梨県／「特選やまなしの食」オープンデータ</a> → <a href=https://github.com/code4sabae/yamanashinoshoku/>写真付きCSV on GitHub</a>)<br>
+    App: CC BY <a href=https://fukuno.jig.jp/3101>福野泰介の一日一創</a><br>
+</div>
+</body>
 </html>
