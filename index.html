@@ -3,10 +3,18 @@
 import { CSV } from "https://code4sabae.github.io/js/CSV.js";
 
 window.onload = async () => {
-    const csv = await CSV.fetch("https://www.pref.yamanashi.jp/shokuhin-st/shokuiku/documents/yamanashinoshoku.csv");
+    // const csv = await CSV.fetch("https://www.pref.yamanashi.jp/shokuhin-st/shokuiku/documents/yamanashinoshoku.csv");
+    // CORS err
 
+    const csv = await CSV.fetch("https://code4sabae.github.io/yamanashinoshoku/yamanashinoshoku3.csv");
     console.log(csv);
-}
 
+    const data = CSV.toJSON(csv);
+    for (const d of data) {
+        const img = new Image();
+        img.src = d["写真URL"];
+        document.body.appendChild(img);
+    }
+};
 </script>
 </html>
