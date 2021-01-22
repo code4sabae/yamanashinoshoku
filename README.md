@@ -9,15 +9,11 @@ https://code4sabae.github.io/yamanashinoshoku/yamanashinoshoku3.csv
 UTF-8化、写真URL追加、写真ダウンロード、GitHub Pages対応
 
 ## 変換プログラムと変換手順
-``
+```
 $ deno run -A download.js
-``
-``
 $ deno run -A parse_make.js
-``
-``
 $ deno run -A download_images.js
-``
+```
 
 ## サンプルアプリ
 https://code4sabae.github.io/yamanashinoshoku/  
